@@ -1,0 +1,54 @@
+/*
+ * Creado Por DadoRoom
+ * www.DadoRoom.com
+ * 
+ */
+:root {
+    --primero: #151c36;
+    --segundo: #485778;
+    --tercero: #abb1bc;
+    --cuarto: #fff8e6;
+    --quinto: #fbdcc4;
+
+    --accion1:#f53c56;
+    --accion2:#46749b;
+    --accion3:#d1890a;
+}
+
+
+html,body{
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+/*Fondos*/
+/*.background: linear-gradient(to top, white 52%, #191919 50%);*/
+.bg-l-g-1{
+    background:linear-gradient(to top, var(--primero) 69%, var(--tercero) 69%);
+
+}
+.bg-1{
+    background: var(--primero);
+}
+.bg-2{
+    background: var(--segundo);
+}
+.bg-3{
+    background: var(--tercero);
+}
+.bg-4{
+    background: var(--cuarto);
+}
+.bg-5{
+    background: var(--quinto);
+}
+.bg-6{
+    background: var(--accion1);
+}
+.bg-7{
+    background: var(--accion2);
+}
+.bg-8{
+    background: var(--accion3);
+}
+/*Colores*/

@@ -1,0 +1,15 @@
+#DADOROOM
+#Todas las entradas al sitio tiene que pasar por el archivo index, y ser redireccionado segun la url
+#La url se basa en secciones despues del nombre del sitio, ejemplo: misitio.com/seccion_1/seccion_2
+#El manejo se administra en el archivo index.php
+
+RewriteEngine On
+#No redireccionar el sitio cuando se acceda Assets, carpeta dedicada a los recursos
+RewriteRule ^(.*)/$ /Assets/{REQUEST_URI}$1 [L,R=301]
+ 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l 
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA] 
+ 
+  
