@@ -5,10 +5,11 @@
  *
  * @author dado_
  */
-require_once 'libs/BD.php';
 /* * Esta clase es padre y hereda a las clases de Modelo* */
 
-class Modelo extends BD {
+require_once 'libs/BD.php';
+
+class Modelo extends App {
 
     public function __construct() {
         
@@ -106,12 +107,15 @@ class Modelo extends BD {
      *      */
 
     public function query($query, $last_id = false) {
-        $result = $this->bdQuery($query, $last_id);
+        $bd = new BD();
+        $result = $bd->bdQuery($query, $last_id);
         return $result;
     }
 
     public function getQuery($query) {
-        $result = $this->bdQuery($query);
+        
+        $result = $this->query($query);
+        
         if ($result->num_rows > 0) {
             $arreglo = array();
 
@@ -145,8 +149,7 @@ class Modelo extends BD {
             foreach ($arreglo as $i => $v) {
 
                 foreach ($v as $j => $valor) {
-                    $metodo = "get" . ucfirst($j);
-                    echo $metodo;
+                    $metodo = "get" . ucfirst($j); 
                     if (method_exists($this->entidad_nombre, $metodo)) {
                         $arreglo = $entidad->$metodo($arreglo);
                     }
@@ -156,9 +159,9 @@ class Modelo extends BD {
 
             return $arreglo;
         } else {
-
-            require_once 'libs/App.php'; 
-            $this->app->entidad_404();
+            $error = "No se encontro la entidad $this->entidad_nombre";
+            $this->entidad_404($error);
+            exit;
         }
     }
 

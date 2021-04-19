@@ -48,7 +48,8 @@ class App {
 
 
         $url = rtrim($metodo, '/');
-        $url = explode('/', $metodo);
+        
+        $url = explode('/', $url);
 
         if ($metodo == "" || $metodo == "index.php") {
             echo "Vacio o Index";
@@ -62,33 +63,34 @@ class App {
 
                 $error = "No existe  Controlador $archivoControlador";
                 $this->page_404($error);
-                return;
+                exit;
             }
         }
     }
 
     private function llamada($url) {
 
-        $controlador = new $url[0]; 
+        $controlador = new $url[0];
         if (isset($url[1])) {
+            /**/
 
-            if (count($url) > 2) {
-                if (!method_exists($url[0], $url[1])) {
+            if (method_exists($url[0], $url[1])) {
+                if (count($url) > 2) {
 
-                    $error = "No existe  Controlador/$url[0]/$url[1]";
-                    $this->page_404($error);
-                    return;
-                } else {
                     /* Si la direccion contiene mas de una seccion ejemplo: misitio.com/controlador/seccion2 */
 
                     $controlador->{$url[1]}($url[2]);
+                } else {
+
+                    /* Si la direccion contiene solo el controlador ejemplo: misitio.com/controlador */
+                    $controlador->{$url[1]}();
                 }
             } else {
-
-
-                /* Si la direccion contiene solo el controlador ejemplo: misitio.com/controlador */
-                $controlador->{$url[1]}();
+                $error = "No existe  Controlador/$url[0]/$url[1]";
+                $this->page_404($error);
+                exit;
             }
+            /**/
         } else {
             $controlador->index();
         }
@@ -112,6 +114,7 @@ class App {
     public function function_404($error = null) {
         include_once "Views/dadoroom/function_404.php";
     }
+
     public function entidad_404($error = "Entidad No Encontrada") {
         include_once "Views/dadoroom/function_404.php";
     }
