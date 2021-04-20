@@ -24,8 +24,11 @@ html,body{
 /*Fondos*/
 /*.background: linear-gradient(to top, white 52%, #191919 50%);*/
 .bg-l-g-1{
-    background:linear-gradient(to top, var(--primero) 69%, var(--tercero) 69%);
+    background:linear-gradient(to top left, var(--primero) 50%, var(--tercero) 50%);
 
+}
+.bg-white{
+    background: #ffffff;
 }
 .bg-1{
     background: var(--primero);
