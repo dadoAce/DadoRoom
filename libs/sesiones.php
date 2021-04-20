@@ -33,8 +33,13 @@ class sesiones extends App {
         $_SESSION[$this->sesion_usuario] = $datos;
     }
 
-    public function getUsuarioSesion() {
-        return $_SESSION[$this->sesion_usuario];
+    public function getUsuarioSesion($id = null) {
+        if ($id == null) {
+
+            return $_SESSION[$this->sesion_usuario];
+        } else {
+            return $_SESSION[$this->sesion_usuario][$id];
+        }
     }
 
     /* Si la variable $filtro_usuario es verdadera, se ejecutara;
