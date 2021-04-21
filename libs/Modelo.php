@@ -46,7 +46,13 @@ class Modelo extends App {
         $values = substr($values, 0, -1);
         $query = "insert into $this->tabla($cols) values($values)";
         $result = $this->query($query, true);
-        return $result;
+
+        if (is_numeric($result)) {
+            return $result;
+        } else {
+            /*             * Error, no regreso el ultimo id */
+            $this->user_404($result);
+        }
     }
 
     public function selectAll() {
@@ -77,7 +83,7 @@ class Modelo extends App {
         }
 
         $values = substr($values, 0, -1);
-        $query = "UPDATE $this->tabla set $values where $this->pk =" . $datos[$this->pk ];
+        $query = "UPDATE $this->tabla set $values where $this->pk =" . $datos[$this->pk];
         $result = $this->query($query);
         return $result[0];
     }
@@ -113,9 +119,9 @@ class Modelo extends App {
     }
 
     public function getQuery($query) {
-        
+
         $result = $this->query($query);
-        
+
         if ($result->num_rows > 0) {
             $arreglo = array();
 
@@ -149,7 +155,7 @@ class Modelo extends App {
             foreach ($arreglo as $i => $v) {
 
                 foreach ($v as $j => $valor) {
-                    $metodo = "get" . ucfirst($j); 
+                    $metodo = "get" . ucfirst($j);
                     if (method_exists($this->entidad_nombre, $metodo)) {
                         $arreglo = $entidad->$metodo($arreglo);
                     }

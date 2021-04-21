@@ -56,42 +56,22 @@ class Usuario extends App {
         }
         $datos["usuario"] = $_POST["usuario"];
         $datos["password"] = $_POST["password"];
-        $datos["rol_usuario"] = $_POST["rol_usuario"];
+        $datos["rol"] = $_POST["rol"];
+
         require_once 'Modelo/UsuarioModel.php';
-        require_once 'Modelo/PersonaModel.php';
         $usuarioM = new UsuarioModel();
-        $personaM = new PersonaModel();
 
-        $servicioCliente["id_usuario"] = $usuarioM->save($datos);
-
-
-        require_once 'Modelo/ServiciosModel.php';
-        $serviciosM = new ServiciosModel();
-        $servicios = $serviciosM->findAll();
-        if ($datos["rol_usuario"] == 1) {
-
-            foreach ($servicios as $s) {
-                if (isset($_POST["servicio_" . $s["id_servicio"]])) {
-
-                    $servicioCliente["id_servicio"] = $s["id_servicio"];
-                    $serviciosM->guardarServicioCliente($servicioCliente);
-                }
-            }
-            $datosPersona["id_usuario"] = $servicioCliente["id_usuario"];
-            $personaM->save($datosPersona);
-        }
-        /*         * datos de servicio* */
-
-        header("Location: " . $this->base_url("Admin/usuarios"));
+        $result = $usuarioM->save($datos);
+        header("Location: " . $this->base_url("Admin"));
     }
 
     public function eliminarUsuario($idUsuario) {
         require_once 'Modelo/UsuarioModel.php';
         $usuarioM = new UsuarioModel();
 
-        $servicioCliente["id_usuario"] = $usuarioM->eliminarUsuario($idUsuario);
+        $servicioCliente["id_usuario"] = $usuarioM->delete($idUsuario);
 
-        header("Location: " . $this->base_url("Admin/usuarios"));
+        header("Location: " . $this->base_url("Admin"));
     }
 
     public function detallesUsuario($idUsuario) {
@@ -99,13 +79,36 @@ class Usuario extends App {
 
         $usuarioM = new UsuarioModel();
 
-        $usuario = $usuarioM->select($idUsuario); 
+        $usuario = $usuarioM->select($idUsuario);
 
         /* Direccion de vista en variable */
         $contenido = "Views/admin/usuario_detalles.php";
 
         /* Mostrar la plantilla dibde se mostrara la el contenido */
         include_once "Views/Admin/template_Admin.php";
+    }
+
+    public function modificar() {
+        require_once 'Modelo/UsuarioModel.php';
+        $usuarioM = new UsuarioModel();
+
+        date_default_timezone_set("America/Mexico_City");
+
+        $datos["idUsuario"] = $_POST["idUsuario"];
+        $datos["usuario"] = $_POST["usuario"];
+        $datos["password"] = $_POST["password"];
+        $datos["rol"] = $_POST["rol"];
+        $datos["estatus"] = $_POST["estatus"];
+
+        $hoy = date("Y-m-d H:i:s");
+        $datos["fecha_modificacion"] = $hoy;
+        if ($_POST["estatus"] == 0) {
+            echo "eliminar";
+            $datos["fecha_eliminacion"] = $hoy;
+        }
+        
+        $usuarioM->update($datos);
+        header("Location: " . $this->base_url("Usuario/detallesUsuario/" . $datos["idUsuario"]));
     }
 
 }

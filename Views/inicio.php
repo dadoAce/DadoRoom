@@ -8,21 +8,18 @@
     <body >
         <section class="bg-l-g-1">
 
-            <div class="container  d-flex flex-column justify-content-center align-items-center">
+            <div class="container h-100  d-flex flex-column justify-content-center align-items-center">
                 <div class="   d-flex flex-column justify-content-center align-items-center bg-light border pl-5 pr-5 shadow rounded"   >
                     <img width="100" src="<?php echo $this->base_url("/Assets/imgs/sistema/LogoDado200p.png") ?>">
                     <h1>DADOROOM v.1</h1>
-
+                    <h4>  <a target="_blank"  href="https://dadoace.github.io/DadoRoom/"><i class="bi bi-book"></i>Manual</a> </h4>
                 </div>
-                
-                <form class="text-center    d-flex flex-column justify-content-center align-items-center bg-white border pl-5 pr-5 pb-3 shadow rounded" action="<?= $this->base_url("Usuario/iniciarSesion"); ?>" method="post">
+
+                <form class="text-center    d-flex flex-column justify-content-center align-items-center bg-white border pl-5 pr-5 pb-3 mt-3 shadow rounded" action="<?= $this->base_url("Usuario/iniciarSesion"); ?>" method="post">
                     <div>
-                        <label>Usar el Script de ejemplo 'BD_DadoRoom.sql' para poder ejecutar los procesos pre establecidos en los siguientes archivos</label>
-                        <ul type="none">
-                            <li>'Modelo/usuarioModel'</li>
-                            <li>'Controlador/usuario'</li> 
-                        </ul>   
-                        <label>En caso de tener experiencia puedes borrarlos</label>
+                        <label>Usar el Script de ejemplo 'BD_DadoRoom.sql' para poder ejecutar el sistema de muestra</label>
+
+                        <h4><i class="bi bi-book"></i></h4><h5><a target="_blank" href="https://dadoace.github.io/DadoRoom/" style="color: #151c36">Manual</a> </h5>
                     </div> 
 
                     <h3>Inicia Sesion</h3>  
