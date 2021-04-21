@@ -24,6 +24,7 @@ html,body{
 /*Fondos*/
 /*.background: linear-gradient(to top, white 52%, #191919 50%);*/
 .bg-l-g-1{
+    background-attachment: fixed;
     background:linear-gradient(to top left, var(--primero) 50%, var(--tercero) 50%);
 
 }
