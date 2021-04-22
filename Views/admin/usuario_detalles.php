@@ -16,6 +16,7 @@
             <hr>
         </div>  
         <div class=" col-12 col-sm-6">
+            <label>Usuario</label>
 
             <div class="input-group mb-3 text-center d-flex flex-row justify-content-center  ">
                 <div class="input-group-prepend">
@@ -25,6 +26,7 @@
             </div>
         </div>
         <div class=" col-12 col-sm-6">
+            <label>Password</label>
 
             <div class="input-group mb-3 text-center d-flex flex-row justify-content-center  ">
                 <div class="input-group-prepend">
@@ -34,6 +36,7 @@
             </div>
         </div>
         <div class=" col-12 col-sm-6">
+            <label>Rol</label>
 
             <div class="input-group mb-3 text-center d-flex flex-row justify-content-center  ">
                 <div class="input-group-prepend">
@@ -54,6 +57,7 @@
             </div>
         </div>
         <div class=" col-12 col-sm-6">
+            <label>Estatus</label>
 
             <div class="input-group mb-3 text-center d-flex flex-row justify-content-center  ">
                 <div class="input-group-prepend">
@@ -73,7 +77,7 @@
             </div>
         </div>
         <div class=" col-12 col-sm-6">
-
+            <label>Fecha Creacion</label>
             <div class="input-group mb-3 text-center d-flex flex-row justify-content-center  ">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar "></i></span>
@@ -82,6 +86,7 @@
             </div>
         </div>
         <div class=" col-12 col-sm-6">
+            <label>Fecha Modificacion</label>
 
             <div class="input-group mb-3 text-center d-flex flex-row justify-content-center  ">
                 <div class="input-group-prepend">
@@ -91,6 +96,7 @@
             </div>
         </div>
         <div class=" col-12 col-sm-6">
+            <label>Fecha Eliminacion</label>
 
             <div class="input-group mb-3 text-center d-flex flex-row justify-content-center  ">
                 <div class="input-group-prepend">
