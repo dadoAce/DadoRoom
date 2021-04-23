@@ -5,7 +5,7 @@ define("MYSQL_CONN_ERROR", "Unable to connect to database.");
 mysqli_report(MYSQLI_REPORT_STRICT);
 
 class BD {
-
+ 
     public $mysqli = null;
 
     function __construct() {

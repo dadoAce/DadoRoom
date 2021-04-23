@@ -2,7 +2,7 @@
 
 /* Clase principal */
 
-class App {
+class App { 
     /* Cambiar los valores de acuerdo a su proyecto */
 
     /* Direccion del proyecto:
