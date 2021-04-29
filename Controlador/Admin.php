@@ -9,7 +9,7 @@ class Admin extends App {
     public function index() {
         $this->inicio();
     }
-
+ 
     /* Vista */
 
     public function inicio() {
