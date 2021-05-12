@@ -19,7 +19,8 @@ class Admin extends App {
         $usuarioM = new UsuarioModel();
 
         /* Crear variables */
-        $usuarios = $usuarioM->selectAll();
+        $usuarios = $usuarioM->usuariosActivos(1);
+        $usuariosInactivos = $usuarioM->usuariosActivos(0);
 
         /* Direccion de vista en variable */
         $contenido = "Views/Admin/usuarios_admin.php";

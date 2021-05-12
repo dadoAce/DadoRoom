@@ -10,12 +10,15 @@ and open the template in the editor.
         <title></title>
         <?php include_once 'Views/complementos/referencias/referencias.php'; ?>
     </head>
-    <body class="bg-l-g-1"> 
+    <body> 
+        <main  class="bg-l-g-1">
+            
         <?php
         if (isset($contenido)) {
             include_once $contenido;
         }
         ?>
+        </main>
     </body>
 </html>
 

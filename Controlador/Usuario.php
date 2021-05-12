@@ -73,6 +73,18 @@ class Usuario extends App {
 
         header("Location: " . $this->base_url("Admin"));
     }
+    public function eliminarLogica($idUsuario) {
+        require_once 'Modelo/UsuarioModel.php';
+        $usuarioM = new UsuarioModel();
+
+        $datos["idUsuario"] = $idUsuario;
+        $datos["fecha_eliminacion"] = date("Y-m-d H:i:s");
+        $datos["estatus"] = 0;
+        $usuarioM->update($datos);
+        
+        header("Location: " . $this->base_url("Admin"));
+ 
+    }
 
     public function detallesUsuario($idUsuario) {
         require_once 'Modelo/UsuarioModel.php';

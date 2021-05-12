@@ -25,8 +25,10 @@ html,body{
 /*.background: linear-gradient(to top, white 52%, #191919 50%);*/
 .bg-l-g-1{
     height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background: linear-gradient(to top , white 45%, #191919 45%); 
     background-attachment: fixed;
-    background:linear-gradient(to top left, var(--primero) 50%, var(--tercero) 50%);
 
 }
 .bg-white{
