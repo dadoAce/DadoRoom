@@ -17,9 +17,7 @@ class App
     /* Controlador a cargar pro default */
     public $controlador_default = "Home";
 
-    /*     * **************** */
-    /*     * **************** */
-    /*     * **************** */
+    /*     * **************** */ 
     /*     * **************** */
     /* No cambiar los datos de abajo */
 

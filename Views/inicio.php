@@ -13,7 +13,7 @@
         <div class="container h-100  d-flex flex-column justify-content-center align-items-center">
             <div class="   d-flex flex-column justify-content-center align-items-center bg-light border pl-5 pr-5 shadow rounded">
                 <img width="100" src="<?php echo $this->base_url("/Assets/imgs/sistema/LogoDado200p.png") ?>">
-                <h1>DADOROOM v.1</h1>
+                <h1>DADOROOM v.1.2</h1>
                 <h4> <a target="_blank" href="https://dadoace.github.io/DadoRoom/"><i class="bi bi-book"></i>Manual</a> </h4>
             </div>
 
