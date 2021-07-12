@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>DadoRoom</title>
+        <title>Dado room prueba</title>
         <?php include_once 'Views/complementos/referencias/referencias.php'; ?>
     </head>
     <body >
