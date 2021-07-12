@@ -2,16 +2,17 @@
 
 /* Clase principal */
 
-class App { 
+class App
+{
     /* Cambiar los valores de acuerdo a su proyecto */
 
     /* Direccion del proyecto:
       para local usar : */
 
-    public $base_url = "/";
+    //public $base_url = "/";
 
     /* Para servidor en linea usar la direccion del sitio */
-//    public $base_url = "http://dadoroom.com/"; 
+    public $base_url = "/myframework/";
 
     /* Controlador a cargar pro default */
     public $controlador_default = "Home";
@@ -22,7 +23,8 @@ class App {
     /*     * **************** */
     /* No cambiar los datos de abajo */
 
-    public function __construct() {
+    public function __construct()
+    {
 
         /* Filtro para mandar a una pantalla si no se ha iniciado sesion */
         $this->filtroUsuario();
@@ -48,7 +50,7 @@ class App {
 
 
         $url = rtrim($metodo, '/');
-        
+
         $url = explode('/', $url);
 
         if ($metodo == "" || $metodo == "index.php") {
@@ -68,7 +70,8 @@ class App {
         }
     }
 
-    private function llamada($url) {
+    private function llamada($url)
+    {
 
         $controlador = new $url[0];
         if (isset($url[1])) {
@@ -96,31 +99,36 @@ class App {
         }
     }
 
-    public function base_url($url = "") {
+    public function base_url($url = "")
+    {
 
         return $this->base_url . $url;
     }
 
-    public function filtroUsuario() {
+    public function filtroUsuario()
+    {
         require_once 'libs/sesiones.php';
         $sesion = new sesiones();
         $sesion->filtroUsuario();
     }
 
-    public function page_404($error = null) {
+    public function page_404($error = null)
+    {
         include_once "Views/dadoroom/function_404.php";
     }
 
-    public function function_404($error = null) {
+    public function function_404($error = null)
+    {
         include_once "Views/dadoroom/function_404.php";
     }
 
-    public function entidad_404($error = "Entidad No Encontrada") {
+    public function entidad_404($error = "Entidad No Encontrada")
+    {
         include_once "Views/dadoroom/function_404.php";
     }
 
-    public function user_404($error = null) {
+    public function user_404($error = null)
+    {
         include_once "Views/dadoroom/user_404.php";
     }
-
 }
