@@ -8,7 +8,7 @@ class App {
     /* Direccion del proyecto:
       para local usar : */
 
-    public $base_url = "http://localhost/DadoRoom/";
+    public $base_url = "/";
 
     /* Para servidor en linea usar la direccion del sitio */
 //    public $base_url = "http://dadoroom.com/"; 

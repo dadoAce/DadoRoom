@@ -1,7 +1,7 @@
 <div class="  h-50 ">  
     <div class="h-100 d-flex flex-column justify-content-center align-items-center">
 
-        <form class=" bg-light row border rounded p-1 w-50"  action="<?= $this->base_url("Usuario/crearUsuario"); ?>" method="post">
+        <form class=" bg-light row border rounded p-1 w-50"  action="/Usuario/crearUsuario" method="post">
             <div class="text-center w-100">
                 <h5>Crear Nuevo Usuario</h5>
             </div>
