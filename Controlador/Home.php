@@ -11,11 +11,11 @@ class Home extends App {
     }
 
     public function inicio() {/* Vista */
-        include_once "Views/inicio.php";
+        $this->vista("principal/inicio") ;
     }
 
     public function Bienvenido() {/* Vista */
-        include_once "Views/template_Admin.php";
+        include_once "Views/principal/template_Admin.php";
     }
 
 }

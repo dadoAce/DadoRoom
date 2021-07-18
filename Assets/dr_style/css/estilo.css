@@ -15,6 +15,16 @@
     --accion3:#d1890a;
 }
 
+#menu-lateral{
+    width: 15%;
+    border-right: solid;
+    float: left;
+}
+
+#contenido{
+    width: 85%; 
+}
+
 
 html,body{
     height: 100%;
@@ -23,7 +33,7 @@ html,body{
 }
 /*Fondos*/
 /*.background: linear-gradient(to top, white 52%, #191919 50%);*/
-.bg-l-g-1{
+.bg-g-1{
     height: 100%;
     margin: 0px;
     padding: 0px;

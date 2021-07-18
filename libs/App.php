@@ -9,15 +9,15 @@ class App
     /* Direccion del proyecto:
       para local usar : */
 
-    //public $base_url = "/";
+    public $base_url = "/DadoRoom/";
 
     /* Para servidor en linea usar la direccion del sitio */
-    public $base_url = "/myframework/";
+    //public $base_url = "/myframework/";
 
     /* Controlador a cargar pro default */
     public $controlador_default = "Home";
 
-    /*     * **************** */ 
+    /*     * **************** */
     /*     * **************** */
     /* No cambiar los datos de abajo */
 
@@ -128,5 +128,18 @@ class App
     public function user_404($error = null)
     {
         include_once "Views/dadoroom/user_404.php";
+    }
+
+    /**LLAMAR A VISTA */
+    public function vista($vista, $include = null)
+    {
+        if (file_exists("Views/" . $vista . ".php")) {
+
+            include_once "Views/" . $vista . ".php";
+        } else {
+            echo "VISTA NO ENCONTRADA";
+            echo "<br>";
+            echo "Views/" . $vista . ".php";
+        }
     }
 }

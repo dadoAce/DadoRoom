@@ -1,5 +1,7 @@
+const seleccion_menu = () => {
 
-$("#btn-editar").click(function(){
-   $(".edicion") .prop("disabled",false);
-   $(".edicion") .show();
+}
+
+$(function() {
+    seleccion_menu();
 });
