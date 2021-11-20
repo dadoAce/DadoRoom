@@ -14,11 +14,16 @@ class App
     /* Para servidor en linea usar la direccion del sitio */
     //public $base_url = "/myframework/";
 
+    //RUTAS DE LAS CARPETAS; NOMBRE DE LOS FOLDERS
+    public $locacion_controladores  = "controladores";
+    public $locacion_modelos        = "modelos";
+    public $locacion_vistas         = "vistas";
+    public $locacion_entidad        = "entidades";
+    public $locacion_lib            = "libs";
+
     /* Controlador a cargar pro default */
     public $controlador_default = "Home";
 
-    /*     * **************** */
-    /*     * **************** */
     /* No cambiar los datos de abajo */
 
     public function __construct()
@@ -32,7 +37,7 @@ class App
             $metodo = $_GET['url'];
         } else {
             /** Cuando se llama a la raiz: sitio.com/* */
-            $archivoControlador = "Controlador/" . $this->controlador_default . ".php";
+            $archivoControlador = $this->locacion_controladores . "/" . $this->controlador_default . ".php";
             if (file_exists($archivoControlador)) {
 
                 require_once $archivoControlador;
@@ -41,12 +46,11 @@ class App
             } else {
                 $error = "NO Existe el Archivo " . $archivoControlador;
                 $this->page_404($error);
-                return;
             }
             return;
         }
 
-
+        /**SI LA URL TIENE UN METODO */
         $url = rtrim($metodo, '/');
 
         $url = explode('/', $url);
@@ -54,7 +58,7 @@ class App
         if ($metodo == "" || $metodo == "index.php") {
             echo "Vacio o Index";
         } else {
-            $archivoControlador = 'Controlador/' . $url[0] . ".php";
+            $archivoControlador = $this->locacion_controladores . '/' . $url[0] . ".php";
 
             if (file_exists($archivoControlador)) {
                 require_once $archivoControlador;
@@ -87,7 +91,7 @@ class App
                     $controlador->{$url[1]}();
                 }
             } else {
-                $error = "No existe  Controlador/$url[0]/$url[1]";
+                $error = "No existe " . $this->locacion_controladores . "/$url[0]/$url[1]";
                 $this->page_404($error);
                 exit;
             }
@@ -112,34 +116,54 @@ class App
 
     public function page_404($error = null)
     {
-        include_once "Views/dadoroom/function_404.php";
+        include_once  $this->locacion_vistas . "/dadoroom/function_404.php";
     }
 
     public function function_404($error = null)
     {
-        include_once "Views/dadoroom/function_404.php";
+        include_once $this->locacion_vistas . "/dadoroom/function_404.php";
     }
 
     public function entidad_404($error = "Entidad No Encontrada")
     {
-        include_once "Views/dadoroom/function_404.php";
+        include_once $this->locacion_vistas . "/dadoroom/function_404.php";
     }
 
     public function user_404($error = null)
     {
-        include_once "Views/dadoroom/user_404.php";
+        include_once $this->locacion_vistas . "/dadoroom/user_404.php";
     }
 
-    /**LLAMAR A VISTA */
-    public function vista($vista, $include = null)
+    //LLAMAR A UNA VISTA
+    public function vista($vista, $include = null, $soloRuta = false)
     {
-        if (file_exists("Views/" . $vista . ".php")) {
+        if ($soloRuta) {
+            return $this->locacion_vistas . "/" . $vista . ".php";
+        }
+        if (file_exists($this->locacion_vistas . "/" . $vista . ".php")) {
 
-            include_once "Views/" . $vista . ".php";
+            include_once $this->locacion_vistas . "/" . $vista . ".php";
         } else {
             echo "VISTA NO ENCONTRADA";
             echo "<br>";
-            echo "Views/" . $vista . ".php";
+            echo $this->locacion_vistas . "/" . $vista . ".php";
         }
+    }
+
+    //LLAMAR A UN MODELO
+    public function modelo($modelo)
+    {
+        include $this->locacion_modelos . "/" . $modelo . ".php";
+        return new $modelo();
+    }
+    //LLAMAR A UNA ENTIDAD
+    public function entidad($modelo)
+    {
+        include $this->locacion_entidad . "/" . $modelo . ".php";
+    }
+    //LLAMAR A UNA libreria
+    public function lib($modelo)
+    {
+        include $this->locacion_lib . "/" . $modelo . ".php";
     }
 }

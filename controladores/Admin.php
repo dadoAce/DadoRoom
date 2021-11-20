@@ -14,7 +14,7 @@ class Admin extends App {
 
     public function inicio() {
         /* Llamar al Modelo Usuarios */
-        require_once 'Modelo/UsuarioModel.php';
+        $this->modelo("UsuarioModel");
         /* Crear Objeto */
         $usuarioM = new UsuarioModel();
 
@@ -23,6 +23,7 @@ class Admin extends App {
         $usuariosInactivos = $usuarioM->usuariosActivos(0);
 
         /* Direccion de vista en variable */
+        $this->vista("principal/template_Admin");
         $contenido = "Views/Admin/usuarios_admin.php";
         /* Mostrar la plantilla dibde se mostrara la el contenido */
         include_once "Views/Admin/template_Admin.php";

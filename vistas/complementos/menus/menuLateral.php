@@ -1,6 +1,6 @@
 
 <div class="text-white text-center h-100 float-left" style="  width: 15%; background: #191919; ">
-    <div id="menu_lateral" class="h-100 text-white d-flex flex-column justify-content-star align-items-center pt-5"> 
+    <div id="menu_lateral-1" class="h-100 text-white d-flex flex-column justify-content-star align-items-center pt-5"> 
 
         <?php if ($_SESSION["usuario"]["rol_usuario"] == 0) {/* si es admin */ ?>
  
