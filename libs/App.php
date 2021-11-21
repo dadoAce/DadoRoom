@@ -109,7 +109,7 @@ class App
 
     public function filtroUsuario()
     {
-        require_once 'libs/sesiones.php';
+        require_once 'libs/Sesiones.php';
         $sesion = new sesiones();
         $sesion->filtroUsuario();
     }
@@ -135,13 +135,16 @@ class App
     }
 
     //LLAMAR A UNA VISTA
-    public function vista($vista, $include = null, $soloRuta = false)
+    public function vista($vista, $datos = null, $soloRuta = false)
     {
         if ($soloRuta) {
             return $this->locacion_vistas . "/" . $vista . ".php";
         }
         if (file_exists($this->locacion_vistas . "/" . $vista . ".php")) {
+            if ($datos != null) {
 
+                extract($datos);
+            }
             include_once $this->locacion_vistas . "/" . $vista . ".php";
         } else {
             echo "VISTA NO ENCONTRADA";

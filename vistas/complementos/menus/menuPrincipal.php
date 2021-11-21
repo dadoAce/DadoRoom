@@ -3,7 +3,7 @@
         <div class="menu-lateral-header w-100">
             <div class="d-flex justify-content-end cerrar-menu  pr-3">x</div>
             <div class="py-3  d-flex flex-column flex-md-row  align-items-center justify-content-center">
-                <img width="30" src="<?php echo $this->base_url("/Assets/imgs/sistema/LogoDado200p.png") ?>" class="rounded-circle bg-white">
+                <img width="30" src="<?php echo $this->base_url("/assets/imgs/sistema/LogoDado200p.png") ?>" class="rounded-circle bg-white">
                 <div class="menu-site-title px-1">Dadoroom</div>
             </div>
         </div>

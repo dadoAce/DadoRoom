@@ -7,7 +7,7 @@
  */
 class imagenes extends App {
 
-    public $rutaImg = "Assets/imgs/";
+    public $rutaImg = "assets/imgs/";
 
     public function __construct() {
         

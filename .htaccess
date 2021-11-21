@@ -5,7 +5,7 @@
 
 RewriteEngine On
 #No redireccionar el sitio cuando se acceda Assets, carpeta dedicada a los recursos
-#RewriteRule ^(.*)/$ /Assets/{REQUEST_URI}$1 [L,R=301]
+#RewriteRule ^(.*)/$ /assets/{REQUEST_URI}$1 [L,R=301]
  
 ## Remove trailing slash
 #RewriteCond %{REQUEST_FILENAME} !-d

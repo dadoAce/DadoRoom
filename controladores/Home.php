@@ -21,4 +21,8 @@ class Home extends App
     {/* Vista */
         $this->vista("principal/template_Admin");
     }
+
+    public function prueba(){
+        echo $_SERVER['REQUEST_URI'];
+    }
 }

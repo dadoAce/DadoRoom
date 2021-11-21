@@ -17,7 +17,7 @@ and open the template in the editor.
         <?php
         echo $error
         ?>
-        <img class="w-50" src="<?= $this->base_url("Assets/imgs/sistema/page_404") ?>">
+        <img class="w-50" src="<?= $this->base_url("assets/imgs/sistema/page_404") ?>">
     </div>
 </body>
 
