@@ -28,7 +28,7 @@ class App
     public function __construct()
     {
         echo "=>";
-        echo $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+        echo $_SERVER["HTTP_HOST"];
         echo "<=";
         /* Filtro para mandar a una pantalla si no se ha iniciado sesion */
         $this->filtroUsuario();
