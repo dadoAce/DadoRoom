@@ -106,7 +106,7 @@ class App
     public function base_url($url = "")
     {
         if ($this->_base_url == "") {
-            return $_SERVER["HTTP_HOST"] . $url;
+            return  "/" . $_SERVER["HTTP_HOST"] . $url;
         } else {
 
             return $this->_base_url . $url;
