@@ -9,7 +9,7 @@ class App
     /* Direccion del proyecto:
       para local usar : */
 
-    public $base_url = "/web/";
+    public $base_url = "/web";
 
     /* Para servidor en linea usar la direccion del sitio */
     //public $base_url = "/myframework/";

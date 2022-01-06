@@ -8,12 +8,13 @@
 class Imagenes extends App
 {
 
-    public $rutaImg = "assets/imgs/";
+    public $_rutaImg = "assets/imgs/";
 
     public function __construct()
     {
     }
 
+    //CREAR CARPETA EN CASO DE QUE NO HAYA EN DONDE GUARDAR LA IMAGEN
     public function crearCarpeta($carpeta, $nombre)
     {
 
@@ -23,6 +24,7 @@ class Imagenes extends App
         }
     }
 
+    //SUBIR IMAGEN AL SERVIDOR, SE UTILIZA LA CAPERTA DE LA VARIBALE _rutaImg
     public function subirImagen($imagen, $carpeta, $nombre)
     {
         $ruta = $this->rutaImg . $carpeta . "/" . $nombre;
@@ -30,6 +32,7 @@ class Imagenes extends App
         }
     }
 
+    //SUBIR IMAGEN AL SERVIDOR, SE PUEDE MODIFICAR LA CALIDAD CON LA QUE SE SUBE AL SERVIDOR
     public function subirImagenCalidad($imagen, $carpeta, $nombre = null, $calidad)
     {
 
@@ -62,6 +65,7 @@ class Imagenes extends App
         }
     }
 
+    //VERIFICAR EL TIPO DE IMAGEN 
     public function tipoImagen($imagen)
     {
         $tipo = exif_imagetype($imagen["tmp_name"]);
