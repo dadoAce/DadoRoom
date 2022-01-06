@@ -14,11 +14,10 @@ class Usuario extends App
     public function iniciarSesion()
     {
         /* Llamar a clases */
-        $this->lib("Sesiones");
+        $_sesionLIB =  $this->lib("Sesiones");
 
 
-        /* Instanciar Clases creando objetos */
-        $_sesionLIB = new Sesiones();
+        /* Instanciar Clases creando objetos */ 
         $usuarioModel = $this->modelo("UsuarioModel");
 
         /* Obtener los datos del formulario de inicio de sesion; Guardarlos en un arreglo */

@@ -174,6 +174,7 @@ class App
     public function lib($lib)
     {
         include $this->locacion_lib . "/" . $lib . ".php";
+        return new $lib();
     }
 
     public function header($link)
