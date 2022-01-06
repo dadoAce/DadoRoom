@@ -5,7 +5,7 @@
  *
  * @author dado_
  */
-class sesiones extends App {
+class Sesiones extends App {
     /* Sesion de usuarios 
      * El filtro se llama desde libs/App.php con el metodo filtroUsuario
      *      */ 
