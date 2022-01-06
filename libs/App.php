@@ -9,7 +9,7 @@ class App
     /* Direccion del proyecto:
       para local usar : */
 
-    public $base_url = "/web";
+    public $base_url = "/";
 
     /* Para servidor en linea usar la direccion del sitio */
     //public $base_url = "/myframework/";
@@ -44,7 +44,7 @@ class App
                 $controlador = new $this->controlador_default;
                 $controlador->index();
             } else {
-                $error = "NO Existe el Archivo " . $archivoControlador;
+                $error = "No Existe el Archivo " . $archivoControlador;
                 $this->page_404($error);
             }
             return;
