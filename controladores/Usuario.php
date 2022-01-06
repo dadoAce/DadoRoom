@@ -18,7 +18,7 @@ class Usuario extends App
 
 
         /* Instanciar Clases creando objetos */
-        $sesion = new sesiones();
+        $_sesionLIB = new Sesiones();
         $usuarioModel = $this->modelo("UsuarioModel");
 
         /* Obtener los datos del formulario de inicio de sesion; Guardarlos en un arreglo */
@@ -29,7 +29,7 @@ class Usuario extends App
 
         if ($result != null) {
             /* Guardar valores en una sesion */
-            $sesion->setUsuarioSesion($result);
+            $_sesionLIB->setUsuarioSesion($result);
 
             if ($result["rol_usuario"]) {
                 /* Si es Cliente */
