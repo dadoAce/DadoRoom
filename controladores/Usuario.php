@@ -14,7 +14,7 @@ class Usuario extends App
     public function iniciarSesion()
     {
         /* Llamar a clases */
-        require_once "libs/sesiones.php";
+        $this->lib("Sesiones");
 
 
         /* Instanciar Clases creando objetos */
@@ -33,19 +33,19 @@ class Usuario extends App
 
             if ($result["rol_usuario"]) {
                 /* Si es Cliente */
-                header("Location: " . $this->base_url("Usuario"));
+                $this->header("Home/Usuario");
             } else {/* si es admin */
-                header("Location: " . $this->base_url("Admin"));
+                $this->header("Home/Admin");
             }
         } else {
             /* Si no se encontro el usuario  en la base de datos */
-            header("Location: " . $this->base_url("Home/calendario"));
+            $this->header("Home/calendario");
         }
     }
 
     public function cerrarSesion()
     {
-        include_once "libs/sesiones.php";
+        $this->lib("Sesiones");
         $sesion = new sesiones();
         $result = $sesion->cerrarSesion();
 
@@ -68,7 +68,7 @@ class Usuario extends App
         $usuarioM = new UsuarioModel();
 
         $result = $usuarioM->save($datos);
-        header("Location: " . $this->base_url("Admin"));
+        $this->header("Admin");
     }
 
     public function eliminarUsuario($idUsuario)
@@ -78,7 +78,7 @@ class Usuario extends App
 
         $servicioCliente["id_usuario"] = $usuarioM->delete($idUsuario);
 
-        header("Location: " . $this->base_url("Admin"));
+        $this->header("Admin");
     }
     public function eliminarLogica($idUsuario)
     {
@@ -90,7 +90,7 @@ class Usuario extends App
         $datos["estatus"] = 0;
         $usuarioM->update($datos);
 
-        header("Location: " . $this->base_url("Admin"));
+        $this->header("Admin");
     }
 
     public function detallesUsuario($idUsuario)
@@ -130,6 +130,6 @@ class Usuario extends App
         }
 
         $usuarioM->update($datos);
-        header("Location: " . $this->base_url("Usuario/detallesUsuario/" . $datos["idUsuario"]));
+        $this->header("Usuario/detallesUsuario/" . $datos["idUsuario"]);
     }
 }

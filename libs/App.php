@@ -171,9 +171,9 @@ class App
         include $this->locacion_entidad . "/" . $modelo . ".php";
     }
     //LLAMAR A UNA libreria
-    public function lib($modelo)
+    public function lib($lib)
     {
-        include $this->locacion_lib . "/" . $modelo . ".php";
+        include $this->locacion_lib . "/" . $lib . ".php";
     }
 
     public function header($link)
