@@ -15,12 +15,12 @@ class Usuario extends App
     {
         /* Llamar a clases */
         require_once "libs/sesiones.php";
-        
+
 
         /* Instanciar Clases creando objetos */
         $sesion = new sesiones();
         $usuarioModel = $this->modelo("UsuarioModel");
-        
+
         /* Obtener los datos del formulario de inicio de sesion; Guardarlos en un arreglo */
         $datos["usuario"] = $_POST["usuario"];
         $datos["password"] = $_POST["password"];
@@ -49,7 +49,7 @@ class Usuario extends App
         $sesion = new sesiones();
         $result = $sesion->cerrarSesion();
 
-        header("Location: " . $this->base_url("Home/inicio"));
+        $this->header("Home/inicio");
     }
 
     /* procesos para el usuario */

@@ -7,9 +7,9 @@ class App
     /* Cambiar los valores de acuerdo a su proyecto */
 
     /* $_base_url
-
+        METODO PRINCIPAL: base_url()
         Direccion del proyecto: 
-            RECOMENDABLE:   DEJAR EN BLANCO PARA USAR LA FUNCION $_SERVER["HTTP_HOST"] Y QUE DETECTE AUTOMATICAMENTE LA URL
+            RECOMENDABLE:   DEJAR EN BLANCO PARA USAR NOTACIÓN ../ 
             OPCIONAL:       LLENAR SI QUIERES ESPECIFICAR OTRA DIRECCIÓN
       
       */
@@ -106,7 +106,7 @@ class App
     public function base_url($url = "")
     {
         if ($this->_base_url == "") {
-            return  "/" . $_SERVER["HTTP_HOST"] . $url;
+            return  "../" . $url;
         } else {
 
             return $this->_base_url . $url;
@@ -174,5 +174,11 @@ class App
     public function lib($modelo)
     {
         include $this->locacion_lib . "/" . $modelo . ".php";
+    }
+
+    public function header($link)
+    {
+
+        header("Location: " . $this->base_url($link));
     }
 }
