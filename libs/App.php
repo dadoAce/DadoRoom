@@ -6,12 +6,15 @@ class App
 {
     /* Cambiar los valores de acuerdo a su proyecto */
 
-    /* Direccion del proyecto:
-      para local usar : */
-    public $base_url = "/";
+    /* $_base_url
 
-    /* Para servidor en linea usar la direccion del sitio */
-    //public $base_url = "/myframework/";
+        Direccion del proyecto: 
+            RECOMENDABLE:   DEJAR EN BLANCO PARA USAR LA FUNCION $_SERVER["HTTP_HOST"] Y QUE DETECTE AUTOMATICAMENTE LA URL
+            OPCIONAL:       LLENAR SI QUIERES ESPECIFICAR OTRA DIRECCIÓN
+      
+      */
+    public $_base_url = "";
+
 
     //RUTAS DE LAS CARPETAS; NOMBRE DE LOS FOLDERS
     public $locacion_controladores  = "controladores";
@@ -27,9 +30,6 @@ class App
 
     public function __construct()
     {
-        echo "=>";
-        echo $_SERVER["HTTP_HOST"];
-        echo "<=";
         /* Filtro para mandar a una pantalla si no se ha iniciado sesion */
         $this->filtroUsuario();
 
@@ -102,10 +102,15 @@ class App
         }
     }
 
+    //METODO IMPORTANTE: 
     public function base_url($url = "")
     {
+        if ($this->_base_url == "") {
+            return $_SERVER["HTTP_HOST"] . $url;
+        } else {
 
-        return $this->base_url . $url;
+            return $this->_base_url . $url;
+        }
     }
 
     public function filtroUsuario()
