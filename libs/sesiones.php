@@ -8,7 +8,7 @@
 class sesiones extends App {
     /* Sesion de usuarios 
      * El filtro se llama desde libs/App.php con el metodo filtroUsuario
-     *      */
+     *      */ 
 
     public $filtro_usuario = false; /* True: Realizar filtro; false: no realizar el filtro */
     public $inicio_sesion_vista = "Home/inicio";
