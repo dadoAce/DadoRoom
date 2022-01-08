@@ -1,32 +1,34 @@
 <?php
 
-class Admin extends App {
+class Admin extends App
+{
 
-    function __construct() {
-        
+    function __construct()
+    {
     }
 
-    public function index() {
+    public function index()
+    {
         $this->inicio();
     }
- 
+
     /* Vista */
 
-    public function inicio() {
+    public function inicio()
+    {
         /* Llamar al Modelo Usuarios */
         $this->modelo("UsuarioModel");
         /* Crear Objeto */
         $usuarioM = new UsuarioModel();
 
         /* Crear variables */
-        $usuarios = $usuarioM->usuariosActivos(1);
-        $usuariosInactivos = $usuarioM->usuariosActivos(0);
+        $datos["usuarios"] = $usuarioM->usuariosActivos(1);
+        $datos["usuariosInactivos"] = $usuarioM->usuariosActivos(0);
 
         /* Direccion de vista en variable */
-        $this->vista("principal/template_Admin");
-        $contenido = "Views/Admin/usuarios_admin.php";
-        /* Mostrar la plantilla dibde se mostrara la el contenido */
-        include_once "Views/Admin/template_Admin.php";
-    }
 
+        $template["contenido"]  = $this->vista("Admin/usuarios_admin", $datos , true);
+        /* Mostrar la plantilla dibde se mostrara la el contenido */
+        $this->vista("Admin/template_Admin", $template);
+    }
 }

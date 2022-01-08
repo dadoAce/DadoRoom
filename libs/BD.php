@@ -1,7 +1,6 @@
 <?php
 
 define("MYSQL_CONN_ERROR", "Unable to connect to database.");
-// Ensure reporting is setup correctly
 mysqli_report(MYSQLI_REPORT_STRICT);
 
 class BD {

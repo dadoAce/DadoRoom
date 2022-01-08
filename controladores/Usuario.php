@@ -14,10 +14,11 @@ class Usuario extends App
     public function iniciarSesion()
     {
         /* Llamar a clases */
-        $_sesionLIB =  $this->lib("Sesiones");
 
+        require_once "libs/Sesiones.php";
 
-        /* Instanciar Clases creando objetos */ 
+        $_sesionLIB = new sesiones();
+        /* Instanciar Clases creando objetos */
         $usuarioModel = $this->modelo("UsuarioModel");
 
         /* Obtener los datos del formulario de inicio de sesion; Guardarlos en un arreglo */
@@ -32,13 +33,13 @@ class Usuario extends App
 
             if ($result["rol_usuario"]) {
                 /* Si es Cliente */
-                $this->header("Home/Usuario");
+                $this->header("/Home/Usuario");
             } else {/* si es admin */
-                $this->header("Home/Admin");
+                $this->header("/Admin");
             }
         } else {
             /* Si no se encontro el usuario  en la base de datos */
-            $this->header("Home/calendario");
+            $this->header("/Home/calendario");
         }
     }
 
@@ -98,14 +99,14 @@ class Usuario extends App
 
         $usuarioM = new UsuarioModel();
 
-        $usuario = $usuarioM->select($idUsuario);
+        $datos["usuario"] = $usuarioM->select($idUsuario);
 
         /* Direccion de vista en variable */
-        $contenido = $this->vista("admin/usuario_detalles", null, true);
+        $datos["contenido"] = $this->vista("admin/usuario_detalles", null, true);
 
 
         /* Mostrar la plantilla dibde se mostrara la el contenido */
-        $this->vista("Admin/template_Admin", $contenido);
+        $this->vista("Admin/template_Admin", $datos);
     }
 
     public function modificar()

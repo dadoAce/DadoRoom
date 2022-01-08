@@ -13,6 +13,8 @@ class App
             OPCIONAL:       LLENAR SI QUIERES ESPECIFICAR OTRA DIRECCIÓN
       
       */
+    public $_localhost = "/DadoRoom";
+
     public $_base_url = "";
 
 
@@ -105,6 +107,10 @@ class App
     //METODO IMPORTANTE: 
     public function base_url($url = "")
     {
+        if ($this->_localhost) {
+
+            return  $this->_localhost . $url;
+        }
         if ($this->_base_url == "") {
             return  "../" . $url;
         } else {
@@ -140,22 +146,33 @@ class App
         include_once $this->locacion_vistas . "/dadoroom/user_404.php";
     }
 
-    //LLAMAR A UNA VISTA
+    //LLAMAR A UNA 
+    //$vista: direccion dentro de la caperta $locacion_vista, sin extencion, se agrega automaticamente el .php
     public function vista($vista, $datos = null, $soloRuta = false)
     {
+        //si $soloRuta esta activada, entonces regresara el include en una variable,
         if ($soloRuta) {
-            return $this->locacion_vistas . "/" . $vista . ".php";
-        }
-        if (file_exists($this->locacion_vistas . "/" . $vista . ".php")) {
             if ($datos != null) {
 
                 extract($datos);
             }
-            include_once $this->locacion_vistas . "/" . $vista . ".php";
+            return include($this->locacion_vistas . "/" . $vista . ".php");
         } else {
-            echo "VISTA NO ENCONTRADA";
-            echo "<br>";
-            echo $this->locacion_vistas . "/" . $vista . ".php";
+            //EN CASO CONTRARIO, BUSCARA LA RUTA PROPORCIONADA
+            if (file_exists($this->locacion_vistas . "/" . $vista . ".php")) {
+                //EN CASO DE QUE EXISTA, VERIFICA SI $DATOS ES VACIO, 
+                if ($datos != null) {
+                    //SI NO ES VACIO, ENTONCES DESPLIEGA TODOS LAS VARIABLES DENTRO DEL ARRAY
+                    extract($datos);
+                }
+                //MOSTRAR LA RUTA
+                include_once $this->locacion_vistas . "/" . $vista . ".php";
+            } else {
+                //EN CASO DE QUE NO SE ENCUENTRE LA RUTA
+                echo "VISTA NO ENCONTRADA";
+                echo "<br>";
+                echo $this->locacion_vistas . "/" . $vista . ".php";
+            }
         }
     }
 
@@ -174,12 +191,10 @@ class App
     public function lib($lib)
     {
         include $this->locacion_lib . "/" . $lib . ".php";
-        return new $lib();
     }
 
     public function header($link)
     {
-
         header("Location: " . $this->base_url($link));
     }
 }
