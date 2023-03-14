@@ -37,8 +37,11 @@ class Modelo extends App
         $values = "";
         foreach ($datos as $key => $v) {
             if (in_array($key, $this->columnas)) {
-                $cols .= "$key,";
-                $values .= "'$v',";
+                if ($key != "") {
+
+                    $cols .= "$key,";
+                    $values .= "'$v',";
+                }
             } else {
                 return "Error, valor $key no se encuentra";
             }
@@ -48,12 +51,13 @@ class Modelo extends App
         $values = substr($values, 0, -1);
         $query = "insert into $this->tabla($cols) values($values)";
         $result = $this->query($query, true);
-
         if (is_numeric($result)) {
             return $result;
         } else {
             /*             * Error, no regreso el ultimo id */
-            $this->user_404($result);
+            //$this->user_404($result);
+            echo "saver error";
+            echo var_dump($result);
         }
     }
 
@@ -64,7 +68,7 @@ class Modelo extends App
         $result = $this->getQuery($query);
         return $result;
     }
-
+ 
     public function delete($id)
     {
         $query = "delete  from $this->tabla where $this->pk = $id";
@@ -72,7 +76,7 @@ class Modelo extends App
         return $result;
     }
 
-    public function update($datos)
+    public function update($datos, $idString = false)
     {
         $values = "";
         foreach ($datos as $key => $v) {
@@ -81,16 +85,28 @@ class Modelo extends App
                 //                unset($datos[$key]);
             } else
             if (in_array($key, $this->columnas)) {
-                $values .= "$key = '$v',";
+                if ($key != "") {
+
+                    $values .= "$key = '$v',";
+                }
             } else {
                 return "Error, valor $key no se encuentra";
             }
         }
 
         $values = substr($values, 0, -1);
-        $query = "UPDATE $this->tabla set $values where $this->pk =" . $datos[$this->pk];
+        if ($idString) {
+            $query = "UPDATE $this->tabla set $values where $this->pk ='" . $datos[$this->pk] . "'";
+        } else {
+            $query = "UPDATE $this->tabla set $values where $this->pk =" . $datos[$this->pk];
+        }
         $result = $this->query($query);
-        return $result[0];
+        if ($result == 1) {
+            return "ok";
+        } else {
+
+            return $result[0];
+        }
     }
 
     /* Metodos Secundarios */
@@ -151,7 +167,12 @@ class Modelo extends App
     {
 
         $result = $this->getQuery($query);
-        return $result[0];
+        if ($result != null) {
+
+            return $result[0];
+        } else {
+            return null;
+        }
     }
 
     public function verEntidad($arreglo)

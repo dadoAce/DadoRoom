@@ -3,21 +3,23 @@
 define("MYSQL_CONN_ERROR", "Unable to connect to database.");
 mysqli_report(MYSQLI_REPORT_STRICT);
 
-class BD {
- 
+class BD
+{
+
     public $mysqli = null;
 
-    function __construct() {
-        
+    function __construct()
+    {
     }
 
-    public function connection($query, $last_id = false) {
+    public function connection($query, $last_id = false)
+    {
 
         //--------------------------------Datos de la base de datos(datos de ejemplo)
-        $db_host = "localhost";
-        $db_username = "root";
-        $db_pass = "";
-        $db_name = "dadoroom";
+        $db_host = "ip";
+        $db_username = "xx";
+        $db_pass = "xx";
+        $db_name = "xx";
         //--------------------------------Datos de la base de datos local 
         //--------------------------------Ingresar para la conexion
         try {
@@ -51,27 +53,48 @@ class BD {
                 }
             }
         } catch (mysqli_sql_exception $e) {
-            return "No se Puede Conectar a la Base de datos ".$e;
+            return "No se Puede Conectar a la Base de datos " . $e;
         }
     }
 
-    public function cerrar($mysqli) {
+    public function cerrar($mysqli)
+    {
         mysqli_close($mysqli);
     }
 
-    function getMysqli() {
+    function getMysqli()
+    {
         return $this->mysqli;
     }
 
-    function setMysqli($mysqli) {
+    function setMysqli($mysqli)
+    {
         $this->mysqli = $mysqli;
     }
 
     /* ejecutar */
 
-    function bdQuery($query, $last_id = false) {
+    function bdQuery($query, $last_id = false)
+    {
         $result = $this->connection($query, $last_id);
         return $result;
     }
 
+    public function getQueryBase($query)
+    {
+        echo "===================";
+        $result = $this->connection($query);
+
+        if ($result->num_rows > 0) {
+            $arreglo = array();
+
+            while ($row = $result->fetch_assoc()) {
+                array_push($arreglo, $row);
+            }
+            return $arreglo;
+        } else {
+            return false;
+        }
+        return $result;
+    }
 }
