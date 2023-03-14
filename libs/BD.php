@@ -81,8 +81,7 @@ class BD
     }
 
     public function getQueryBase($query)
-    {
-        echo "===================";
+    { 
         $result = $this->connection($query);
 
         if ($result->num_rows > 0) {
